@@ -1,16 +1,5 @@
-# bazaartask
+The application to be developed is developed to meet personal needs. 
 
-A new Flutter project.
+The main goal is to learn flutter and develop an app. 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+It is aimed to follow the work to be done personally on a work list, to update the lists instantly, to get the coordinate information instantly, to draw the road maps on the map, to show the photos taken on the route.
