@@ -1,4 +1,5 @@
 import 'package:bazaartask/ui/dialog.dart';
+import 'package:bazaartask/ui/shopping_list_item_page.dart';
 import 'package:flutter/material.dart';
 
 class ShoppingListPage extends StatefulWidget {
@@ -16,8 +17,9 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
         title: const Text("Shopping List App"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showDialog(context: context, builder: (BuildContext) => ItemDialog());
+        onPressed: () async {
+          String itemName = await showDialog(
+              context: context, builder: (BuildContext) => ItemDialog());
         },
         child: const Icon(Icons.add),
       ),
@@ -35,26 +37,13 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
       body: PageView(
         controller: _pageController,
         children: <Widget>[
-          Container(color: Colors.blue),
+          ShoppingListItemPage(),
           Container(color: Colors.orange),
           Container(color: Colors.red)
         ],
       ),
     );
   }
-
-  BottomNavigationBarItem historyButton() {
-    return BottomNavigationBarItem(
-        icon: Icon(Icons.history), title: Text("History"));
-  }
-
-  BottomNavigationBarItem listButton() {
-    return BottomNavigationBarItem(
-        icon: Icon(Icons.list), title: Text("Shopping List"));
-  }
-
-  BottomNavigationBarItem homeButton() =>
-      BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("Home"));
 
   void _onTap(int value) {
     setState(() {

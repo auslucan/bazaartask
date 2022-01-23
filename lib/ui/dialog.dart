@@ -8,6 +8,8 @@ class ItemDialog extends StatefulWidget {
 }
 
 class _ItemDialogState extends State<ItemDialog> {
+  final _formKey = GlobalKey<FormState>();
+  String? _itemName;
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
@@ -18,12 +20,24 @@ class _ItemDialogState extends State<ItemDialog> {
           child: Column(
             children: <Widget>[
               Form(
-                child: TextFormField(),
+                key: _formKey,
+                child: TextFormField(
+                  maxLength: 50,
+                  onSaved: (value) => _itemName = value!,
+                  autofocus: true,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "validation error";
+                    }
+                  },
+                ),
               ),
-              SizedBox(height: 16,)
+              SizedBox(
+                height: 16,
+              ),
               FlatButton(
                 child: Text("Add item to shoping list"),
-                onPressed: () {},
+                onPressed: _saveForm,
                 color: Theme.of(context).accentColor,
               )
             ],
@@ -31,5 +45,12 @@ class _ItemDialogState extends State<ItemDialog> {
         )
       ],
     );
+  }
+
+  void _saveForm() {
+    _formKey.currentState?.save();
+    if (_formKey.currentState!.validate()) {
+      Navigator.pop(context, _itemName);
+    }
   }
 }
